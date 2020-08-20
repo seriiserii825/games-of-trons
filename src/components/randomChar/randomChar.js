@@ -25,8 +25,8 @@ export default class RandomChar extends React.Component {
 	}
 
 	updateChar() {
-		const id = Math.floor(Math.random() * 140 + 25);
-		// const id = 14444444;
+		// const id = Math.floor(Math.random() * 140 + 25);
+		const id = 14444444;
 		this.got.getCharacter(id)
 			.then((char) => {
 				this.setState({
