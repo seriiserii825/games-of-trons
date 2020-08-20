@@ -8,11 +8,18 @@ import RandomChar from "../randomChar/randomChar";
 
 export default class App extends React.Component {
 	state = {
-		toggleRandomChar: false
+		toggleRandomChar: false,
+		charId: 130
 	}
 	onToggleRandomChar = () => {
 		this.setState({
 			toggleRandomChar: !this.state.toggleRandomChar
+		});
+	}
+
+	onUpdateCharId = (charId) => {
+		this.setState({
+			charId: charId
 		});
 	}
 
@@ -25,8 +32,8 @@ export default class App extends React.Component {
 					{randomChar}
 					<button className="toggleRandomChar" onClick={this.onToggleRandomChar}>Toggle random char</button>
 					<div className="index-wrap">
-						<ItemList/>
-						<CharDetails/>
+						<ItemList onUpdateCharId={this.onUpdateCharId} />
+						<CharDetails charId={this.state.charId} />
 					</div>
 				</div>
 			</div>

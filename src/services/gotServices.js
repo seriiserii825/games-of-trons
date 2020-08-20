@@ -23,18 +23,20 @@ export default class GotService {
 	}
 
 	_transformCharacter(char){
-		const name = char.name ? char.name : '';
-		const gender = char.gender ? char.gender : '';
-		const born = char.born ? char.born : '';
-		const died = char.died ? char.died : '';
-		const culture = char.culture ? char.culture : '';
+		const name = char.name ? char.name : 'unknown name';
+		const gender = char.gender ? char.gender : 'unknown gender';
+		const born = char.born ? char.born : 'unknown born';
+		const died = char.died ? char.died : 'unknown died';
+		const culture = char.culture ? char.culture : 'unknown culture';
+		const url = char.url;
 
 		return {
 			name: name,
 			gender: gender,
 			born: born,
 			died: died,
-			culture: culture
+			culture: culture,
+			url: url
 		};
 	}
 }
