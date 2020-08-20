@@ -5,17 +5,18 @@ import Spinner from "../spinner/spinner";
 import ErrorMessage from "../errorMessage/errorMessage";
 
 export default class RandomChar extends React.Component {
-	constructor(props) {
-		super(props);
-		this.updateChar();
-		this.state = {
-			char: {},
-			loading: true,
-			error: false
-		}
+	state = {
+		char: {},
+		loading: true,
+		error: false
 	}
-
 	got = new GotService();
+
+	componentDidMount() {
+		this.idInterval = setInterval(() => {
+			this.updateChar();
+		}, 1500);
+	}
 
 	onError = () => {
 		this.setState({
@@ -24,7 +25,11 @@ export default class RandomChar extends React.Component {
 		});
 	}
 
-	updateChar() {
+	componentWillUnmount() {
+		clearInterval(this.idInterval);
+	}
+
+	updateChar = () => {
 		const id = Math.floor(Math.random() * 140 + 25);
 		// const id = 14444444;
 		this.got.getCharacter(id)
