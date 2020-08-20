@@ -1,15 +1,16 @@
 import React from 'react';
 import "./app.scss";
-import GotService from "../../services/gotServices";
 import CharDetails from "../charDetails/charDetails";
 import Header from "../header/header";
 import ItemList from "../itemList/itemList";
 import RandomChar from "../randomChar/randomChar";
+import ErrorMessage from "../errorMessage/errorMessage";
 
 export default class App extends React.Component {
 	state = {
 		toggleRandomChar: false,
-		charId: 130
+		charId: 130,
+		error: false
 	}
 	onToggleRandomChar = () => {
 		this.setState({
@@ -23,8 +24,20 @@ export default class App extends React.Component {
 		});
 	}
 
+	componentDidCatch(error, errorInfo) {
+		this.setState({
+			error: true
+		});
+	}
+
 	render() {
 		const randomChar = !this.state.toggleRandomChar ? <RandomChar/> : null;
+
+
+		if(this.state.error){
+			return <ErrorMessage/>
+		}
+
 		return (
 			<div className="app">
 				<div className="container">
