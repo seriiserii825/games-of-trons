@@ -25,8 +25,8 @@ export default class RandomChar extends React.Component {
 	}
 
 	updateChar() {
-		// const id = Math.floor(Math.random() * 140 + 25);
-		const id = 14444444;
+		const id = Math.floor(Math.random() * 140 + 25);
+		// const id = 14444444;
 		this.got.getCharacter(id)
 			.then((char) => {
 				this.setState({
@@ -38,7 +38,7 @@ export default class RandomChar extends React.Component {
 	}
 
 	render() {
-		const {char , loading, error} = this.state;
+		const {char, loading, error} = this.state;
 		const spinner = loading ? <Spinner/> : null;
 		const errorMessage = error ? <ErrorMessage/> : null;
 		const content = !(loading || error) ? <View char={char}/> : null;

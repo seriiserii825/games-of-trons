@@ -7,12 +7,23 @@ import ItemList from "../itemList/itemList";
 import RandomChar from "../randomChar/randomChar";
 
 export default class App extends React.Component {
+	state = {
+		toggleRandomChar: false
+	}
+	onToggleRandomChar = () => {
+		this.setState({
+			toggleRandomChar: !this.state.toggleRandomChar
+		});
+	}
+
 	render() {
+		const randomChar = !this.state.toggleRandomChar ? <RandomChar/> : null;
 		return (
 			<div className="app">
 				<div className="container">
 					<Header/>
-					<RandomChar/>
+					{randomChar}
+					<button className="toggleRandomChar" onClick={this.onToggleRandomChar}>Toggle random char</button>
 					<div className="index-wrap">
 						<ItemList/>
 						<CharDetails/>
