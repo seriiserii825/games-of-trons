@@ -1,0 +1,38 @@
+.item-list {
+  width: 440px;
+  li {
+    position: relative;
+    padding: 10px;
+    background: lightsteelblue;
+	transition: all .4s;
+    cursor: pointer;
+	border-bottom: 1px solid darken(lightsteelblue, 30%);
+	overflow: hidden;
+	span {
+	  position: relative;
+	  z-index: 2;
+	}
+	&::after {
+	  content: '';
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  background-color: #ffab73;
+	  transform: rotateX(90deg);
+	  z-index: 1;
+	  transition: all .6s;
+	}
+	&:active {
+	  &::after {
+		background-color: darken(#ffab73, 10%);
+	  }
+	}
+    &:hover {
+	  &::after {
+		transform: rotateX(0deg);
+	  }
+    }
+  }
+}

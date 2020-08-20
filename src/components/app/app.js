@@ -21,6 +21,10 @@ export default class App extends React.Component {
 				<div className="container">
 					<Header/>
 					<RandomChar/>
+					<div className="index-wrap">
+						<ItemList/>
+						<CharDetails/>
+					</div>
 				</div>
 			</div>
 		);
