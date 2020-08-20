@@ -1,0 +1,25 @@
+.char-details {
+  margin-left: 140px;
+  width: 500px;
+  padding: 20px;
+  background-color: #f3f3f3;
+  &__title {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .char-details__list {
+    border: 1px solid #c3c3c3;
+  }
+  .char-details__item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #c3c3c3;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .char-details__property {
+    font-weight: bold;
+  }
+}
