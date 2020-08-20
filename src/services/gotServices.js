@@ -11,11 +11,30 @@ export default class GotService {
 		return res.json();
 	};
 
-	getAllCharacters() {
-		return this.getResource('/?page=5')
+	async getAllCharacters() {
+		const res = await this.getResource('/?page=5')
+		return res.map(this._transformCharacter);
 	}
 
-	getCharacter(id) {
-		return this.getResource(`/${id}`)
+	async getCharacter(id) {
+		const character = await this.getResource(`/${id}`);
+		const res = await this._transformCharacter(character);
+		return res;
+	}
+
+	_transformCharacter(char){
+		const name = char.name ? char.name : '';
+		const gender = char.gender ? char.gender : '';
+		const born = char.born ? char.born : '';
+		const died = char.died ? char.died : '';
+		const culture = char.culture ? char.culture : '';
+
+		return {
+			name: name,
+			gender: gender,
+			born: born,
+			died: died,
+			culture: culture
+		};
 	}
 }
