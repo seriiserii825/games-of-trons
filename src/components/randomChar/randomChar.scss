@@ -1,0 +1,17 @@
+.random-char {
+  &.panel {
+	width: 400px;
+  }
+  
+  &__title {
+	margin-bottom: 40px;
+	text-align: center;
+  }
+  &__item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	border-top: 1px solid #949cc1;
+  }
+}
